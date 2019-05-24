@@ -1,0 +1,42 @@
+// Settings
+System.Globalization.CultureInfo.DefaultThreadCurrentCulture
+    = System.Globalization.CultureInfo.CreateSpecificCulture("en-US");
+
+Settings[Keys.Host] = "slcnet.tech";
+Settings[Keys.CleanOutputPath] = true;
+Settings[Keys.LinkRoot] = "/";
+
+
+// Prereqs
+#nuget Wyam.Markdown
+#nuget Wyam.Razor
+#nuget Wyam.Yaml
+
+// Pipeline Definitions
+Pipelines.Add(
+"Pages",
+  ReadFiles("{!_,}*.cshtml"),
+  FrontMatter(Yaml()),
+  Razor(),
+  Meta("OutputFileName", 
+    string.Format(@"{0}.html", ((string)@doc["Title"]).ToLower().Replace(' ', '-'))
+  ),
+  WriteFiles((string)@doc["OutputFileName"])
+);
+
+Pipelines.Add(
+"Posts",
+  ReadFiles("posts/*.md"),
+  FrontMatter(Yaml()),
+  Markdown(),
+  Meta("Post", @doc.Content),
+  Merge(
+    ReadFiles("posts/post.cshtml")
+  ),
+  Razor(),
+  Meta("PostFile", 
+    string.Format(@"posts\{0}.html", ((string)@doc["Title"]).ToLower().Replace(' ', '-'))
+  ),
+  WriteFiles((string)@doc["PostFile"])
+);
+
