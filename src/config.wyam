@@ -40,3 +40,9 @@ Pipelines.Add(
   WriteFiles((string)@doc["PostFile"])
 );
 
+Pipelines.Add(
+"Assets",
+  ReadFiles("assets/**"),
+  WriteFiles()
+);
+
