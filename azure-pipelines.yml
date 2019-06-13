@@ -10,9 +10,20 @@ steps:
 
 - script: |
     export PATH=$PATH:$HOME/.dotnet/tools
+  displayName: 'Put .dotnet/tools in the PATH'
+
+- script: |
     pushd src
     wyam build
+    echo ln -s output $(Build.ArtifactStagingDirectory)
+    ln -s output $(Build.ArtifactStagingDirectory)/output
     popd
   displayName: 'Generate the static site'
 
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: $(Build.ArtifactStagingDirectory)/output
+    artifactName: 'site'
+    publishLocation: 'container'
+  displayName: 'Publish site artifact'
 
