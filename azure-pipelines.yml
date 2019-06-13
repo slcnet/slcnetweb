@@ -12,17 +12,9 @@ steps:
     pushd src
     export PATH=$PATH:$HOME/.dotnet/tools
     wyam build
-    echo ln -s output $(Build.ArtifactStagingDirectory)/linkedoutput
-    ln -s output $(Build.ArtifactStagingDirectory)/linkedoutput
+    ln -s output $(Build.ArtifactStagingDirectory)/output
     popd
   displayName: 'Generate the static site'
-
-- task: CopyFiles@2
-  inputs:
-    sourceFolder: $(Build.SourcesDirectory)/src/
-    contents: 'output/**/*'
-    targetFolder: $(Build.ArtifactStagingDirectory)
-  displayName: 'Copy files to staging directory'
 
 - task: PublishBuildArtifacts@1
   inputs:
@@ -30,11 +22,3 @@ steps:
     artifactName: 'site'
     publishLocation: 'container'
   displayName: 'Publish site artifact'
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    pathToPublish: $(Build.ArtifactStagingDirectory)/linkedoutput
-    artifactName: 'drop'
-    publishLocation: 'container'
-  displayName: 'Publish linked site artifact'
-
