@@ -1,0 +1,17 @@
+trigger:
+- develop
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: dotnet tool install -g Wyam.Tool
+  displayName: 'Install Wyam'
+
+- script: |
+    pushd src
+    wyam build
+    popd
+  displayName: 'Generate the static site'
+
+
