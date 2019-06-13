@@ -9,6 +9,7 @@ steps:
   displayName: 'Install Wyam'
 
 - script: |
+    export PATH=$PATH:$HOME/.dotnet/tools
     pushd src
     wyam build
     popd
