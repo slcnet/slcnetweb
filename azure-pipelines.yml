@@ -12,7 +12,7 @@ steps:
     pushd src
     export PATH=$PATH:$HOME/.dotnet/tools
     wyam build
-    ln -s output $(Build.ArtifactStagingDirectory)/output
+    ln -s $(pwd)/output $(Build.ArtifactStagingDirectory)/output
     popd
   displayName: 'Generate the static site'
 
