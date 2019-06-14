@@ -6,6 +6,19 @@ Settings[Keys.Host] = "slcnet.tech";
 Settings[Keys.CleanOutputPath] = true;
 Settings[Keys.LinkRoot] = "/";
 
+// Code
+public static class Helpers
+{
+  public static string GetFilename(this Wyam.Common.Documents.IDocument meta, string key, string fallback = null)
+  {
+    if (meta.ContainsKey(key))
+    {
+      return ((string)meta[key]).ToLower().Replace(' ', '-').Replace('/','-');
+    }
+    return fallback;
+  }
+}
+
 
 // Prereqs
 #nuget Wyam.Markdown
@@ -14,13 +27,22 @@ Settings[Keys.LinkRoot] = "/";
 
 // Pipeline Definitions
 Pipelines.Add(
-"Pages",
+"CshtmlPages",
   ReadFiles("{!_,}*.cshtml"),
   FrontMatter(Yaml()),
   Razor(),
-  Meta("OutputFileName", 
-    string.Format(@"{0}.html", ((string)@doc["Title"]).ToLower().Replace(' ', '-'))
-  ),
+  Meta("OutputFileName", @doc.GetFilename("Filename") ?? $"{@doc.GetFilename("Title")}.html"),
+  WriteFiles((string)@doc["OutputFileName"])
+);
+
+Pipelines.Add(
+"MarkdownPages",
+  ReadFiles("*.md"),
+  FrontMatter(Yaml()),
+  Markdown(),
+  Meta("Post", @doc.Content),
+  Razor(),
+  Meta("OutputFileName", @doc.GetFilename("Filename") ?? $"{@doc.GetFilename("Title")}.html"),
   WriteFiles((string)@doc["OutputFileName"])
 );
 
@@ -34,9 +56,7 @@ Pipelines.Add(
     ReadFiles("posts/post.cshtml")
   ),
   Razor(),
-  Meta("PostFile", 
-    string.Format(@"posts\{0}.html", ((string)@doc["Title"]).ToLower().Replace(' ', '-'))
-  ),
+  Meta("PostFile", $"posts/{@doc.GetFilename("Filename") ?? @doc.GetFilename("Title") + ".html"}"),
   WriteFiles((string)@doc["PostFile"])
 );
 
