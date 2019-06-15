@@ -1,0 +1,24 @@
+trigger:
+- develop
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: dotnet tool install -g Wyam.Tool
+  displayName: 'Install Wyam'
+
+- script: |
+    pushd src
+    export PATH=$PATH:$HOME/.dotnet/tools
+    wyam build
+    ln -s $(pwd)/output $(Build.ArtifactStagingDirectory)/output
+    popd
+  displayName: 'Generate the static site'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathToPublish: $(Build.ArtifactStagingDirectory)/output
+    artifactName: 'site'
+    publishLocation: 'container'
+  displayName: 'Publish site artifact'
