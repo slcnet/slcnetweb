@@ -66,3 +66,9 @@ Pipelines.Add(
   WriteFiles()
 );
 
+Pipelines.Add(
+"Favicon",
+  ReadFiles("favicon.ico"),
+  WriteFiles()
+);
+
