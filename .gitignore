@@ -5,3 +5,6 @@
 # generated files
 src/output
 config.wyam.*
+
+# macos
+.DS_Store
