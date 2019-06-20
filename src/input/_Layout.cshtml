@@ -8,7 +8,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-      <a class="navbar-brand" href="#"><img src="assets/images/slcnetHeaderLogo.jpg"></a>
+      <a class="navbar-brand" href="home.html"><img src="assets/images/slcnetHeaderLogo.jpg"></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -18,10 +18,7 @@
             <a class="nav-link" href="home.html">Home<span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="meetups.html">Meetups</a>
+            <a class="nav-link" href="events.html">Events</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="partners.html">Partners</a>
@@ -29,16 +26,58 @@
           <li class="nav-item">
             <a class="nav-link" href="sponsors.html">Sponsorship</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="safety.html">Safety</a>
-          </li>
         </ul>
     </nav>
     @RenderBody()
+    <footer class="page-footer font-small text-light bg-dark pt-4">
+      <div class="container-fluid text-center text-md-left">
+        <div class="row">
+          <div class="col-md-6 mt-md-0 mt-3">
+            <h5 class="text-uppercase">SLC.NET</h5>
+              <p>We aim to bring the Utah Silicon Slopes area .NET community together every month to 
+              advance our knowledge and share our passion for these technologies.</p>
+              <p>Join our community of over 1,100 software professionals.</p>
 
+          </div>
+
+          <hr class="clearfix w-100 d-md-none pb-3">
+          <div class="col-md-3 mb-md-0 mb-3">
+            <h5 class="text-uppercase">Events</h5>
+
+            <ul class="list-unstyled">
+              <li>
+                <a href="events.html">Meetup Events</a>
+              </li>
+              <li>
+                <a href="events.html#">Conventions</a>
+              </li>
+            </ul>
+
+          </div>
+          <div class="col-md-3 mb-md-0 mb-3">
+            <h5 class="text-uppercase">More</h5>
+
+            <ul class="list-unstyled">
+              <li>
+                <a href="about.html">About SLC.NET</a>
+              </li>
+              <li>
+                <a href="sponsors.html">Sponsorship Opportunities</a>
+              </li>
+              <li>
+                <a href="contact.html">Contact Us</a>
+              </li>
+              <li>
+                <a href="safety.html">Safety & Inclusion</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-copyright text-center py-3">© 2019 Copyright:
+        <a href="http://slcnet.tech"> SLC.NET</a>
+      </div>
+    </footer>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
