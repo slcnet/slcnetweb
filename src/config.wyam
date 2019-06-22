@@ -62,7 +62,6 @@ Pipelines.Add(
 
 Pipelines.Add(
 "Assets",
-  ReadFiles("assets/**"),
-  ReadFiles("*.ico"),
+  ReadFiles("assets/**", "*.ico"),
   WriteFiles()
 );
