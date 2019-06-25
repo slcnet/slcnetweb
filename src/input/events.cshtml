@@ -1,3 +1,42 @@
 Title: Events
 ---
+<div data-event-date="2019-09-19">
+  <h1>September 19, 2019: SLC.NET Con</h1>
 
+  <p>We're hosting our first ever conference: SLC.NET Con!</p>
+
+  <p>Please join SLC.NET on September 19th, 2019 for an evening of .NET fun in this multi-track conference.</p>
+
+  <p><em>Keynote Speaker</em>: TBA - Coming soon</p>
+
+  <p>Tracks will include:</p>
+  <ul>
+    <li>.NET Core / Standard</li>
+    <li>Azure / Cloud</li>
+    <li>CI / CD / DevOps</li>
+  </ul>
+
+  <p>Benefits of Attending:</p>
+  <ul>
+    <li>Learn from local .NET practitioners.</li>
+    <li>Identify best practices from those working on in-production projects.</li>
+    <li>Uncover emerging trends and tools in the .NET world.</li>
+    <li>Acquire implementable ideas for your projects.</li>
+  </ul>
+</div>
+
+
+@section Scripts {
+<script>
+  // filter out events that have already passed
+  $('*[data-event-date]').each(function(ix) {
+    var date_str = $(this).attr('data-event-date');
+    var event_date = new Date(date_str);
+    var now = new Date();   
+    now.setHours(0,0,0,0);
+    if (event_date < now) {
+      $(this).hide();
+    }
+  });
+</script>
+}

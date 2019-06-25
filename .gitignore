@@ -1,6 +1,7 @@
 # temp files
 *.swp
 *.bak
+*~
 
 # generated files
 src/output
