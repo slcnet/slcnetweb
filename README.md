@@ -9,5 +9,10 @@ To build the website, then do the following:
 
 ```
 cd src
-wyam
+wyam build
+```
+
+From the same directory as above, to preview the website locally do:
+```
+wyam -p
 ```
