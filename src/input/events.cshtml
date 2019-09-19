@@ -161,15 +161,31 @@ Title: Events
   </div>
 </div>
 
+<div data-event-date="2019-10-10" class="card mt-3 bt-3">
+  <div class="card-body">
+    <h1 class="card-title mb-1">Consuming GraphQL APIs - Daniel Soffiantini</h1>
+    <h5 class="card-subtitle text-muted mb-2">October 10, 2019</h5>
+
+    <p>Details coming soon...</p>
+
+    <h2>About the Presenter</h2>
+
+    <p>Details coming soon...</p>
+  </div>
+</div>
+
+
 @section Scripts {
 <script>
   // filter out events that have already passed
   $('*[data-event-date]').each(function(ix) {
     var date_str = $(this).attr('data-event-date');
     var event_date = new Date(date_str);
-    var now = new Date();   
+    // remove the event a couple of days after
+    var day_after_event = new Date(event_date.valueOf() + 86400000*2);
+    var now = new Date();
     now.setHours(0,0,0,0);
-    if (event_date > now) {
+    if (day_after_event <= now) {
       $(this).hide();
     }
   });
