@@ -169,7 +169,7 @@ Title: Events
     var event_date = new Date(date_str);
     var now = new Date();   
     now.setHours(0,0,0,0);
-    if (event_date < now) {
+    if (event_date > now) {
       $(this).hide();
     }
   });
