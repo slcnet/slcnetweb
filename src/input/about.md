@@ -9,3 +9,4 @@ Our Mission: We aim to bring the Utah Silicon Slopes area .NET community togethe
 - Nicole Guffy
 - Steve Taggart
 - William Munn
+- Brie Miller
