@@ -5,6 +5,14 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+
+- task: UseDotNet@2
+  displayName: 'Use .NET 6'
+  inputs:
+    packageType: sdk
+    version: 6.x
+    installationPath: $(Agent.ToolsDirectory)/dotnet
+
 - script: dotnet tool install -g Wyam.Tool
   displayName: 'Install Wyam'
 
